@@ -3,27 +3,27 @@ package com.senaictti.chamados.Entity;
 import jakarta.persistence.*;
 
 @Entity
-public class Usuario {
+public class usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_usuario")
     private Long id;
 
-    @Column(name = "nomeUsuario")
+    @Column(name = "nome_usuario")
     private String nomeUsuario;
 
-    @Column(name = "idadeUsuario")
+    @Column(name = "senha_usuario")
+    private String senhaUsuario;
+
+    @Column(name = "idade_usuario")
     private Integer idadeUsuario;
 
-    @Column(name = "cepUsuario")
+    @Column(name = "cep_usuario")
     private String cepUsuario;
 
-    @Column(name = "cpfUsuario")
+    @Column(name = "cpf_usuario")
     private String cpfUsuario;
 
-    public String getNomeUsuario() {
-        return nomeUsuario;
-    }
 
     public Long getId() {
         return id;
@@ -35,6 +35,17 @@ public class Usuario {
 
     public void setNomeUsuario(String nomeUsuario) {
         this.nomeUsuario = nomeUsuario;
+    }
+    public String getNomeUsuario() {
+        return nomeUsuario;
+    }
+
+    public void setSenhaUsuario(String senhaUsuario) {
+        this.senhaUsuario = senhaUsuario;
+    }
+
+    public String getSenhaUsuario() {
+        return senhaUsuario;
     }
 
     public Integer getIdadeUsuario() {

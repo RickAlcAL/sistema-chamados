@@ -1,11 +1,17 @@
 Para todos os que estão presentes, é de grande importancia olhar este arquivo e escrever o que cada pessoa fez e o que irá fazer.
 Toda vez que terminar uma alteração, adicionar o que foi feito com detalhe minimo para entendimento
 
+Como rodar o projeto:
+Copie o database.sql que tem somente a tabela usuario e troque no applications.propietes o que tem que ser trocado antes de compilar
+
 
 Ricardo
 Atualização na arquitetura, adicionamento da DTO (melhorar aplicação)
 Construção da arquitetura
 Fazer a tratativa de dados da API e o restante da DTO necessaria
+Melhora na arquitetura(Adicionamento do DTO)
+Melhora na security
+Implementação de metodo de cadastro
 Maria
 
 Emily
