@@ -12,7 +12,24 @@ Fazer a tratativa de dados da API e o restante da DTO necessaria
 Melhora na arquitetura(Adicionamento do DTO)
 Melhora na security
 Implementação de metodo de cadastro
+
+
+
+
+
 Maria
+Tabelas historico_chamado, solucao e base_conhecimento criadas no MySQL
+Triggers que bloqueiam UPDATE e DELETE no histórico
+entities: historicochamado, solucao, baseconhecimento
+DTOs: historicodto, solucaodto, conhecimentodto, indicadordto
+repositories: historicorepository, solucaorepository, conhecimentorepository, indicadorrepository
+services: historicoservice, solucaoservice, conhecimentoservice, indicadorservice
+controllers: historicocontroller, solucaocontroller, conhecimentocontroller, indicadorcontroller
+securityconfig com os endpoints liberados temporariamente
+Projeto compila e sobe sem erro
+Testado no Postman: POST /historico, POST /solucoes, POST /conhecimento e as buscas GET
+Ainda falta (depende dos outros): testar os /indicadores
+
 
 Emily
 
