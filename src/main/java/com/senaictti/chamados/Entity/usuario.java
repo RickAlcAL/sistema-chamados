@@ -24,6 +24,15 @@ public class usuario {
     @Column(name = "cpf_usuario")
     private String cpfUsuario;
 
+    // Perfil de acesso (ADMIN, TECNICO ou SOLICITANTE). O default evita erro com usuários antigos.
+    @Enumerated(EnumType.STRING)
+    @Column(name = "perfil_usuario", nullable = false, columnDefinition = "VARCHAR(20) DEFAULT 'SOLICITANTE'")
+    private perfilusuario perfil = perfilusuario.SOLICITANTE;
+
+    // Usuário inativo não consegue fazer login
+    @Column(name = "ativo_usuario", nullable = false, columnDefinition = "BOOLEAN DEFAULT TRUE")
+    private boolean ativo = true;
+
 
     public Long getId() {
         return id;
@@ -70,5 +79,21 @@ public class usuario {
 
     public void setCpfUsuario(String cpfUsuario) {
         this.cpfUsuario = cpfUsuario;
+    }
+
+    public perfilusuario getPerfil() {
+        return perfil;
+    }
+
+    public void setPerfil(perfilusuario perfil) {
+        this.perfil = perfil;
+    }
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
     }
 }
