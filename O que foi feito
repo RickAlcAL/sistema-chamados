@@ -40,3 +40,23 @@ Yasmin
 João Gabriel
 
 Bernardo
+Autenticação, usuários e perfis (login por CPF + senha, HTTP Basic, sem sessão)
+Enum perfilusuario (ADMIN, TECNICO, SOLICITANTE); usuario ganhou perfil_usuario e ativo_usuario (rodar o ALTER TABLE do database.sql se a tabela já existia)
+Security: usuariodetails, usuariodetailsservice (busca por CPF), securityconfig com httpBasic + @EnableMethodSecurity, adminseeder (cria o 1o ADMIN a partir de app.admin.* no application.properties)
+Cadastro público (POST /cadastro) sempre cria SOLICITANTE
+Endpoints novos: GET /auth/me (login), PUT /auth/senha, GET /usuarios (ADMIN), GET e PUT /usuarios/{id} (ADMIN ou próprio usuário), PATCH /usuarios/{id}/perfil e /status (ADMIN)
+usuariodto.Response agora devolve perfil e ativo
+Para os outros módulos: todos os endpoints (exceto /cadastro) agora exigem login. Use @PreAuthorize("hasRole('TECNICO')") ou @AuthenticationPrincipal usuariodetails logado nos controllers
+
+
+Jão Preto (Chamados - núcleo)
+Entities: chamado, grupo, prioridade + enums statuschamado (ABERTO, EM_ATENDIMENTO, FECHADO) e tipogrupo (PRODUCAO, ADMINISTRATIVO). Tabelas com os nomes de colunas que o indicadorrepository já espera
+DTO chamadodto, repositories chamadorepository, gruporepository, prioridaderepository, service chamadoservice, controllers chamadocontroller e catalogocontroller
+catalogoseeder: cria os grupos N1/N2/N3/ADM e as prioridades BAIXA(72h)/MEDIA(24h)/ALTA(8h)/CRITICA(4h) se as tabelas estiverem vazias
+Endpoints: POST /chamados, GET /chamados (?status=), GET e PUT /chamados/{id}, PATCH /chamados/{id}/assumir e /status (TECNICO/ADMIN), GET /grupos e /prioridades
+SOLICITANTE só vê/edita os próprios chamados; TECNICO e ADMIN veem todos. Não existe DELETE (histórico depende do chamado)
+Fechar o chamado exige solução registrada (usa solucaoservice.existeSolucao). Ao fechar grava data_encerramento e sla_cumprido (fechou antes de data_prazo)
+Abrir, assumir, mudar status e editar já gravam evento no histórico automaticamente (historicoservice.registrar)
+database.sql: criadas grupo, prioridade e chamado; ativadas as FKs de historico_chamado, solucao e base_conhecimento para chamado (se o banco já existia, recriar o banco ou rodar os ALTER TABLE equivalentes)
+Fica para a Yasmin: regras de prioridade/prazo, encaminhamento e escalonamento (mudar id_grupo). Ponto de partida: chamadoservice.abrir (prioridade/grupo padrão) e chamado.getGrupo()
+
