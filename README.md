@@ -6,9 +6,9 @@
 ## Abaixo terá uma lista de check-list sobre o que será feito por cada pessoa
 
 > Ricardo – Líder técnico e arquitetura <br>
-Jão Branco – Banco de dados <br>
+João Gabriel – Banco de dados <br>
 Bernadinho – Autenticação, usuários e perfis <br>
-Jão Preto – Chamados (núcleo) <br>
+João Pedro – Chamados (núcleo) <br>
 Yasmin – Regras de negócio (prioridade, prazos, encaminhamento e escalonamento) <br>
 Maria – Histórico, solução, base de conhecimento e indicadores <br>
 Emilly – Testes, simulação e documentação <br>
