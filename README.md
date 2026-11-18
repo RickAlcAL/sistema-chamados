@@ -15,4 +15,4 @@ Emilly – Testes, simulação e documentação <br>
 
 
 > Imagem do 'DER' abaixo <br>
-> ![DER]()![der.png](der.png)
+![Diagrama Entidade-Relacionamento](der.png)
