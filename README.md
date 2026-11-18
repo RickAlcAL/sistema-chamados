@@ -15,4 +15,4 @@ Emilly – Testes, simulação e documentação <br>
 
 
 > Imagem do 'DER' abaixo <br>
-![Texto Alternativo](URL_da_Imagem)
+> ![DER]()![der.png](der.png)
