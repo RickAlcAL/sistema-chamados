@@ -40,6 +40,13 @@ João Pedro
 Yasmin
 
 João Gabriel
+* Revisão do database.sql: conferidas as 7 tabelas (usuario, grupo, prioridade, chamado, historico_chamado, solucao, base_conhecimento) com as entities, e nomes, tipos, tamanhos, NOT NULL, UNIQUE e FKs.
+
+* Adicionada a cláusula condicional "IF NOT EXISTS" na table "usuario".
+
+* Adicionada a cláusula "CHECK" nas colunas que guardam enum como texto: chk_usuario_perfil (ADMIN, TECNICO, SOLICITANTE), chk_grupo_tipo (PRODUCAO, ADMINISTRATIVO) e chk_chamado_status (ABERTO, EM_ATENDIMENTO, FECHADO)
+
+(Se caso um enum ganhar um novo valor, atualizar o CHECK correspondente no arquvio "database.sql", senão o banco recusa o valor)
 
 Bernardo
 Autenticação, usuários e perfis (login por CPF + senha, HTTP Basic, sem sessão)

@@ -6,13 +6,14 @@
 ## Abaixo terá uma lista de check-list sobre o que será feito por cada pessoa
 
 > Ricardo – Líder técnico e arquitetura <br>
-Jão Branco – Banco de dados <br>
+João Gabriel – Banco de dados <br>
 Bernadinho – Autenticação, usuários e perfis <br>
-Jão Preto – Chamados (núcleo) <br>
+João Pedro – Chamados (núcleo) <br>
 Yasmin – Regras de negócio (prioridade, prazos, encaminhamento e escalonamento) <br>
 Maria – Histórico, solução, base de conhecimento e indicadores <br>
 Emilly – Testes, simulação e documentação <br>
 
 
 > Imagem do 'DER' abaixo <br>
-![Texto Alternativo](URL_da_Imagem)
+<img width="2076" height="1585" alt="der" src="https://github.com/user-attachments/assets/f9c5c12f-c89e-4727-aa69-929666e7a83c" />
+
