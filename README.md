@@ -15,4 +15,5 @@ Emilly – Testes, simulação e documentação <br>
 
 
 > Imagem do 'DER' abaixo <br>
-![Diagrama Entidade-Relacionamento ](../der.png)
+<img width="2076" height="1585" alt="der" src="https://github.com/user-attachments/assets/f9c5c12f-c89e-4727-aa69-929666e7a83c" />
+
