@@ -12,6 +12,8 @@ Fazer a tratativa de dados da API e o restante da DTO necessaria
 Melhora na arquitetura(Adicionamento do DTO)
 Melhora na security
 Implementação de metodo de cadastro
+Testes efetuado:
+API usuario com o auth/me está funcionando como deve funcionar
 
 
 
