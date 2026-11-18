@@ -1,7 +1,7 @@
 CREATE DATABASE IF NOT EXISTS chamados;
 USE chamados;
 
-CREATE TABLE usuario (
+CREATE TABLE IF NOT EXISTS usuario (
                          id_usuario     BIGINT       NOT NULL AUTO_INCREMENT,
                          nome_usuario   VARCHAR(255) NOT NULL,
                          idade_usuario  INT,
@@ -10,12 +10,16 @@ CREATE TABLE usuario (
                          senha_usuario  VARCHAR(255)  NOT NULL,
                          perfil_usuario VARCHAR(20)   NOT NULL DEFAULT 'SOLICITANTE', -- ADMIN, TECNICO ou SOLICITANTE
                          ativo_usuario  BOOLEAN       NOT NULL DEFAULT TRUE,
-                         PRIMARY KEY (id_usuario)
+                         PRIMARY KEY (id_usuario),
+                         CONSTRAINT chk_usuario_perfil CHECK (perfil_usuario IN ('ADMIN', 'TECNICO', 'SOLICITANTE'))
 );
 
 -- Se você JÁ criou a tabela usuario antes (sem perfil), rode só estas duas linhas:
 -- ALTER TABLE usuario ADD COLUMN perfil_usuario VARCHAR(20) NOT NULL DEFAULT 'SOLICITANTE';
 -- ALTER TABLE usuario ADD COLUMN ativo_usuario BOOLEAN NOT NULL DEFAULT TRUE;
+
+-- Se a tabela usuario JÁ existia, o CHECK do perfil não é criado sozinho. Rode (precisa de MySQL 8.0.16 ou superior):
+-- ALTER TABLE usuario ADD CONSTRAINT chk_usuario_perfil CHECK (perfil_usuario IN ('ADMIN', 'TECNICO', 'SOLICITANTE'));
 
 -- Grupos de atendimento (N1, N2, N3...). Lida pelos indicadores.
 -- tipo_grupo: PRODUCAO ou ADMINISTRATIVO. (A aplicação insere N1/N2/N3/ADM sozinha se a tabela estiver vazia)
@@ -23,8 +27,10 @@ CREATE TABLE IF NOT EXISTS grupo (
     id_grupo   BIGINT      NOT NULL AUTO_INCREMENT,
     nome_grupo VARCHAR(50) NOT NULL UNIQUE,
     tipo_grupo VARCHAR(20) NOT NULL,
-    PRIMARY KEY (id_grupo)
+    PRIMARY KEY (id_grupo),
+    CONSTRAINT chk_grupo_tipo CHECK (tipo_grupo IN ('PRODUCAO', 'ADMINISTRATIVO'))
 );
+
 
 -- Prioridades com o prazo (SLA) padrão em horas. Lida pelos indicadores.
 -- (A aplicação insere BAIXA/MEDIA/ALTA/CRITICA sozinha se a tabela estiver vazia)
@@ -52,11 +58,14 @@ CREATE TABLE IF NOT EXISTS chamado (
     data_encerramento DATETIME,
     sla_cumprido      BOOLEAN,
     PRIMARY KEY (id_chamado),
+    CONSTRAINT chk_chamado_status CHECK (status IN ('ABERTO', 'EM_ATENDIMENTO', 'FECHADO')),
     FOREIGN KEY (id_solicitante) REFERENCES usuario (id_usuario),
     FOREIGN KEY (id_tecnico)     REFERENCES usuario (id_usuario),
     FOREIGN KEY (id_grupo)       REFERENCES grupo (id_grupo),
     FOREIGN KEY (id_prioridade)  REFERENCES prioridade (id_prioridade)
 );
+
+
 
 
 -- Historico De Chamado
